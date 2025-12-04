@@ -11,6 +11,11 @@
         <button v-on:click="agregarEstudiante()">Agregar Estudiante</button>
         <h1>{{ arreglo[0] }}</h1>
 
+        <hr />
+        <label for="id_nombre_1">Nombre</label>
+        <input v-model="nombre" id="id_nombre_1" type="text">
+        <label for="id_apellido_1">Apellido</label>
+        <input v-model="apellido" @:keypress.enter="agregarEstudiante1" id="id_apellido_1" type="text">
         <ul>
             <!-- <li v-for="estudiante in arreglo" :key="estudiante.nombre"> -->
             <li v-show="nombre" v-for="{ nombre, apellido } in arreglo" :key="nombre">
@@ -29,9 +34,9 @@
 
             </thead>
             <tbody>
-                <tr v-for="{nombre, apellido} in arreglo" :key="apellido">
+                <tr v-for="{ nombre, apellido } in arreglo" :key="apellido">
                     <td>{{ nombre }}</td>
-                    <td>{{apellido }}</td>
+                    <td>{{ apellido }}</td>
                 </tr>
 
             </tbody>
@@ -67,6 +72,22 @@ export default {
             this.arreglo.push(estu);
             this.limpiarFormulario();
         },
+        agregarEstudiante1(event){//se puede omitir(pero puede ser util si no hay modificador de evento especifico)
+            console.log('evento')
+            if(event.charCode!==13){
+                return;
+            }
+            console.log('presiono el ENTER');
+            console.log("Agrego estudiante 1");
+            console.log(event);
+            console.log(event.charCode);
+            console.log(event.keyCode);
+            this.agregarEstudiante();
+
+               
+
+
+        },
         limpiarFormulario() {
             this.nombre = null;
             this.apellido = null;
@@ -76,4 +97,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+</style>
