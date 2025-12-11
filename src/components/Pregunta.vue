@@ -1,0 +1,62 @@
+<template>
+  <div>
+    <img src="https://yesno.wtf/assets/yes/5-64c2804cc48057b94fd0b3eaf323d92c.gif
+ " alt="No se puede ver">
+    <div class = "pregunta-container">
+        <input type="text" placeholder="Hazme una pegunta">
+        <p>Recuerda terminar con el signo de interogación (?)</p>
+        <h2>Sere millonario?</h2>
+        <h1>Yes, No</h1>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+     img{
+        height: 100vh;
+        width: 100vw;
+        max-height: 100%;
+        max-width: 100%;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+    }
+    .pregunta-container{
+        position: relative;
+        font-family: 'Times New Roman', Times, serif;
+        color: azure;
+        min-height: 100vh; /* altura de toda la pantalla */
+        display: flex;
+        flex-direction: column; /* elementos uno debajo del otro */
+        justify-content: center; /* centrado vertical */
+        align-items: center; /* centrado horizontal */
+        
+    }
+    input{
+        width: 250px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    input:focus{
+        outline: none;
+    }
+    /*Combinación de distintos elementos */
+    h1,h2,p{
+        color: white;
+    }
+    /*Puedo declararlo de forma individual */
+    p{
+        font-size: 20px;
+    }
+    h2{
+        margin-top: 150px;
+    }
+</style>
