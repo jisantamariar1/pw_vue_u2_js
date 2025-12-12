@@ -20,5 +20,9 @@ export default {
     align-items: center;
 
     }
+    /* body{
+      background: black;
+      color: black;
+    } */
    
 </style>
