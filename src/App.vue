@@ -2,6 +2,7 @@
   <div>
     <!-- <ContadorView /> -->
     <!-- DirectivasView / -->
+     
     <PreguntaView/>
   </div>
 </template>
