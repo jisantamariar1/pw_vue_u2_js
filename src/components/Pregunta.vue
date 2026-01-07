@@ -67,6 +67,7 @@ img, .oscuro {
 }
 .pregunta-container {
     position: relative;
+    
     font-family: 'Times New Roman', Times, serif;
     color: azure;
     min-height: 100vh;
