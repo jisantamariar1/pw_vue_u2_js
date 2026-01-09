@@ -1,7 +1,14 @@
 <template>
   <div>
-    <PokemonImagen :pokemonId="pokemonGanador" />
+    
+    <PokemonImagen v-if="mostrar" :pokemonId="pokemonGanador" />
     <PokemonOpciones @seleccionado="evaluarGanador($event)" :listaPokemons="pokemonArr" />
+    <button @click="destruir()">Destruir</button>
+  </div>
+  <div>
+    <h1>
+
+    </h1>
   </div>
 
 </template>
@@ -16,14 +23,33 @@ export default {
     return {
       pokemonArr: [],
       pokemonGanador: null,
+      mostrar:true,
     }
   },
-  mounted() {
-    console.log("componente PokemonView montado");
-    this.iniciarJuego();
-
-
+  beforeCreate() {
+    console.log("componente PokemonView antes de crearse:Apenas inicia la instancia del componente");
   },
+  created() {
+    console.log("componente PokemonView creado:ya se resolvieron data, computed, methods, watch");
+  },
+  /* Monta el componente cuando se renderiza o visualiza el componente */
+  beforeMount() {
+    console.log("Justo ante del primer render de un elemento html");
+  },
+  mounted() {
+    console.log("componente PokemonView montado -> el componente ya se visualiza en el html");
+    this.iniciarJuego();
+  },
+  /* Actualiza el componente cuando hay cambios en data o props */
+  beforeUpdate() {
+    console.log("beforeUpdate: cuando cambio un data o un props del componente y vue esta por renderizar el cambio -> antes de que el DOM se actualice");
+  },
+  updated() {
+    console.log("updated: cuando ya se actualizo tras la re-renderizacion -> el DOM se actualizó");
+  },
+
+
+
   components: {
     PokemonImagen,
     PokemonOpciones
@@ -38,14 +64,21 @@ export default {
 
 
     },
+     destruir() {
+      this.mostrar = !this.mostrar;
+    },
     evaluarGanador(idGanador) {
+      const mensaje="";
       console.log('valor recibido desde padre')
       console.log(idGanador);
       if (idGanador === this.pokemonGanador) {
         console.log('¡Has ganado!');
+        mensaje='¡Has ganado!';
       } else {
         console.log('¡Has perdido! Inténtalo de nuevo.');
+        mensaje='¡Has perdido! Inténtalo de nuevo.';
       }
+      return mensaje;
 
     },
 
