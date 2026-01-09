@@ -1,17 +1,22 @@
 <template>
-  <div>
-    
+  <div class="view-container">
+
     <PokemonImagen v-if="mostrar" :pokemonId="pokemonGanador" />
     <PokemonOpciones @seleccionado="evaluarGanador($event)" :listaPokemons="pokemonArr" />
     <button @click="destruir()">Destruir</button>
-  </div>
-  <div>
-    <h1>
 
-    </h1>
+    <div class="mensaje">
+      <h1 v-if="mensaje">
+        {{ mensaje }}
+
+      </h1>
+    </div>
+
   </div>
+
 
 </template>
+
 
 <script>
 import PokemonImagen from '@/components/PokemonImagen.vue';
@@ -23,7 +28,8 @@ export default {
     return {
       pokemonArr: [],
       pokemonGanador: null,
-      mostrar:true,
+      mostrar: true,
+      mensaje: null,
     }
   },
   beforeCreate() {
@@ -64,21 +70,19 @@ export default {
 
 
     },
-     destruir() {
+    destruir() {
       this.mostrar = !this.mostrar;
     },
     evaluarGanador(idGanador) {
-      const mensaje="";
       console.log('valor recibido desde padre')
       console.log(idGanador);
       if (idGanador === this.pokemonGanador) {
         console.log('¡Has ganado!');
-        mensaje='¡Has ganado!';
+        this.mensaje = '¡Has ganado!';
       } else {
         console.log('¡Has perdido! Inténtalo de nuevo.');
-        mensaje='¡Has perdido! Inténtalo de nuevo.';
+        this.mensaje = '¡Has perdido! Inténtalo de nuevo.';
       }
-      return mensaje;
 
     },
 
@@ -88,4 +92,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.mensaje {
+  background-color: black;
+  text-align: center;
+}
+
+</style>
